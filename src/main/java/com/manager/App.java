@@ -1,6 +1,6 @@
-package com.ejemplo;
+package com.manager;
 
-import com.ejemplo.config.SceneManager;
+import com.manager.config.SceneManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

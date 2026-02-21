@@ -1,4 +1,4 @@
-package com.ejemplo.model;
+package com.manager.model;
 
 public class Person {
     private String name;

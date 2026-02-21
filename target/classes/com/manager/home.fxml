@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.ejemplo.controller.MainController">
+            fx:controller="com.manager.controller.HomeController">
 
     <center>
         <TableView fx:id="tableView">

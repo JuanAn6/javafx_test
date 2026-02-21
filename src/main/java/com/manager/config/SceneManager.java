@@ -1,4 +1,4 @@
-package com.ejemplo.config;
+package com.manager.config;
 
 
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,7 @@ public class SceneManager {
     public static void load(String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                SceneManager.class.getResource("/com/ejemplo/" + fxml)
+                SceneManager.class.getResource("/com/manager/" + fxml)
             );
             Parent root = loader.load();
             stage.setScene(new Scene(root));

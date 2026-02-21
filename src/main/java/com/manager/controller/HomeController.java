@@ -1,14 +1,12 @@
-package com.ejemplo.controller;
+package com.manager.controller;
 
-import com.ejemplo.model.Person;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.manager.model.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class MainController {
+public class HomeController {
 
     @FXML
     private TableView<Person> tableView;
@@ -21,18 +19,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-
-        // Configurar columnas
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
-
-        // Datos de prueba
-        ObservableList<Person> data = FXCollections.observableArrayList(
-                new Person("Carlos", 25),
-                new Person("Ana", 30),
-                new Person("Lucía", 22)
-        );
-
-        tableView.setItems(data);
     }
 }
