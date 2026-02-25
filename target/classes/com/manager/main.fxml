@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             stylesheets="@style.css"
@@ -18,12 +19,29 @@
                                   onAction="#goToHome"/>
                     </items>
                 </Menu>
+                <Menu text="View">
+                    <items>
+                        <CheckMenuItem text="Show lateral menu"
+                                    fx:id="toggleSideMenu"
+                                    selected="true"
+                                    onAction="#toggleSideMenu"/>
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>
 
     <center>
-        <StackPane fx:id="contentPane"/>
+        
+        <SplitPane fx:id="splitPane" dividerPositions="0.1">
+            <!-- Lateral panel -->
+            <VBox fx:id="sideMenu">
+                <Label text="Menú lateral"/>
+                <ListView fx:id="menuList"/>
+            </VBox>
+            <!-- Main content -->
+            <StackPane fx:id="contentPane"/>
+        </SplitPane>
     </center>
 
 </BorderPane>
