@@ -37,7 +37,7 @@
             <!-- Lateral panel -->
             <VBox fx:id="sideMenu">
                 <Label text="Menú lateral"/>
-                <ListView fx:id="menuList"/>
+                <TreeView fx:id="menuTree"/>
             </VBox>
             <!-- Main content -->
             <StackPane fx:id="contentPane"/>

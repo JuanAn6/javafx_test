@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -26,24 +28,16 @@ public class MainController {
     private VBox sideMenu;
 
     @FXML
+    private TreeView<String> menuTree;
+
+    @FXML
     private CheckMenuItem toggleSideMenu;
 
     @FXML
     public void initialize() {
         loadView("home.fxml"); // vista inicial
 
-        menuList.getItems().addAll(
-            "Opción 1",
-            "Opción 2",
-            "Opción 3",
-            "Opción 4",
-            "Opción 5",
-            "Opción 6",
-            "Opción 7",
-            "Opción 8",
-            "Opción 9",
-            "Opción 10"
-        );
+        loadTreeMenu();
 
     }
 
@@ -79,6 +73,44 @@ public class MainController {
         } else {
             splitPane.getItems().remove(sideMenu);
         }
+    }
+
+    @FXML
+    private void loadTreeMenu(){
+        // Root node (Hiden if we set it)
+        TreeItem<String> root = new TreeItem<>("Root");
+        root.setExpanded(true);
+
+        TreeItem<String> category1 = new TreeItem<>("Manage");
+        category1.getChildren().addAll(java.util.Arrays.asList(
+            new TreeItem<>("Users"),
+            new TreeItem<>("Products"),
+            new TreeItem<>("Orders")
+        ));
+
+        TreeItem<String> category2 = new TreeItem<>("Settings");
+        category2.getChildren().addAll(java.util.Arrays.asList(
+            new TreeItem<>("General"),
+            new TreeItem<>("Security"),
+            new TreeItem<>("Notifications")
+        ));
+
+        // Add categories to root node
+        root.getChildren().addAll(java.util.Arrays.asList(category1, category2));
+
+        // Set the TreeView
+        menuTree.setRoot(root);
+
+        // Hide root item
+        // menuTree.setShowRoot(false);
+
+        //Click event
+        menuTree.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null && newVal.isLeaf()) {
+                System.out.println("Selected: " + newVal.getValue());
+            }
+        });
+
     }
 
 
